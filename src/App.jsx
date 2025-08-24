@@ -1,7 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import {
-  Github,
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import {
+  Github,   // Use lowercase 'Github'
   Linkedin,
   Mail,
   Moon,
@@ -16,6 +22,9 @@ import {
   Trophy,
   Medal,
   Star,
+  Calendar,
+  MapPin,
+  Briefcase,
 } from "lucide-react";
 
 // =====================
@@ -192,7 +201,7 @@ function Navbar({ sections, active }) {
           onClick={() => scrollToId("home")}
           className="font-semibold tracking-tight"
         >
-          yuvi.dev
+          YUVRAJ
         </button>
         <div className="flex items-center gap-2 md:gap-6">
           <ul className="hidden items-center gap-1 md:flex">
@@ -260,7 +269,7 @@ function Hero() {
                 color: "transparent",
               }}
             >
-              Yuvi
+              Yuvraj
             </span>{" "}
             👋
           </h1>
@@ -271,14 +280,10 @@ function Hero() {
           </p>
           <div className="flex gap-3">
             <a
-              href="#projects"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToId("projects");
-              }}
+              href="https://drive.google.com/file/d/1XaWJILgLw8ZXfqDXCF90ghOmTRVX2SYh/view?usp=sharing"
               className="btn btn-primary inline-flex items-center gap-2"
             >
-              View Projects <ArrowUpRight size={16} />
+              View Resume <ArrowUpRight size={16} />
             </a>
             <a
               href="#contact"
@@ -294,7 +299,7 @@ function Hero() {
           <div className="mt-6 flex items-center gap-4">
             <a
               className="group inline-flex items-center gap-2"
-              href="https://github.com/"
+              href="https://github.com/YuvrajPal27"
               target="_blank"
               rel="noreferrer"
             >
@@ -303,7 +308,7 @@ function Hero() {
             </a>
             <a
               className="group inline-flex items-center gap-2"
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/yuvrajpal27724/"
               target="_blank"
               rel="noreferrer"
             >
@@ -322,12 +327,10 @@ function Hero() {
             transition={{ duration: 0.8 }}
             className="relative mx-auto aspect-square w-64 overflow-hidden rounded-3xl card p-2 shadow-2xl backdrop-blur md:w-80"
           >
-            <div
-              className="h-full w-full rounded-2xl"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, rgba(56,189,248,0.3), rgba(168,85,247,0.3), rgba(99,102,241,0.3))",
-              }}
+            <img
+              src="src\assets\ME1.jpg"
+              alt="Your Name"
+              className="h-full w-full rounded-2xl object-cover"
             />
             <div
               className="pointer-events-none absolute inset-0"
@@ -374,15 +377,14 @@ function Section({ id, title, subtitle, children }) {
 
 function About() {
   const skills = [
-    "React",
-    "Tailwind CSS",
-    "Framer Motion",
-    "JavaScript",
-    "Firebase",
-    "Python",
+    "HTML",
+    "TAILWIND CSS",
+    "JAVASCRIPT",
+    "REACT.JS",
+    "FIREBASE",
+    "PYTHON",
     "ML Basics",
-    "REST APIs",
-    "Git",
+    "GITHUB",
   ];
   return (
     <Section
@@ -392,9 +394,10 @@ function About() {
     >
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <p className="md:col-span-2 leading-7">
-          I'm a CSE undergrad who enjoys building elegant, accessible interfaces
-          and bringing ideas to life. I obsess over clean components, thoughtful
-          micro-interactions, and shipping features that feel good.
+          As a Computer Science graduate with web development internship
+          experience, I'm now channeling my curiosity into AI/ML. I thrive on
+          building visually appealing interfaces with clean code architecture
+          while continuously expanding my knowledge in emerging technologies.
         </p>
         <div className="md:col-span-1">
           <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide muted">
@@ -416,29 +419,150 @@ function About() {
   );
 }
 
+// ===== Experience Section (Resume Style)
+function Experience() {
+  const experiences = useMemo(
+    () => [
+      {
+        id: 1,
+        title: "Project Intern",
+        company: "Uttarakhand Technical University",
+        duration: "April 2024 - August 2024",
+        location: "Dehradun, Uttarakhand",
+        description:
+          "Developed a centralized dashboard unifying data across all universities in Uttarakhand. Delivered a solution presented to the Honorable Governor of Uttarakhand. Created a unified data ecosystem to streamline institutional reporting and decision-making",
+        skills: ["HTML", "CSS", "JAVASCRIPT", "FIREBASE"],
+        icon: <Briefcase size={20} className="text-accent-1" />,
+      },
+      {
+        id: 2,
+        title: "Project Intern",
+        company: "Raj Bhawan Uttarakhand",
+        duration: "May 2023 - July 2023",
+        location: "Dehradun, Uttarakhand",
+        description:
+          "Built frontend systems for a QR-based inventory management solution. Implemented responsive web applications deployed across Raj Bhawan facilities in Dehradun and Nainital. Contributed to digital transformation of governmental inventory processes.",
+        skills: ["HTML", "CSS", "JAVASCRIPT"],
+        icon: <Brain size={20} className="text-accent-2" />,
+      },
+    ],
+    []
+  );
+
+  return (
+    <Section
+      id="experience"
+      title="Experience"
+      subtitle="My professional journey and contributions."
+    >
+      <div className="relative">
+        {/* Timeline line */}
+        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-1 to-accent-3 md:left-1/2 md:-translate-x-1/2"></div>
+
+        <div className="space-y-12">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={exp.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`relative flex flex-col md:flex-row ${
+                index % 2 === 0 ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              {/* Timeline dot */}
+              <div className="absolute left-4 top-6 h-3 w-3 rounded-full bg-accent-2 md:left-1/2 md:-translate-x-1/2"></div>
+
+              {/* Content */}
+              <div
+                className={`ml-10 md:ml-0 md:w-1/2 ${
+                  index % 2 === 0 ? "md:pr-8" : "md:pl-8"
+                }`}
+              >
+                <motion.div
+                  className="group relative overflow-hidden rounded-3xl card p-6 backdrop-blur hover:shadow-lg transition-all duration-500"
+                  whileHover={{ y: -5 }}
+                >
+                  {/* Hover effect background */}
+                  <div
+                    className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{
+                      background: `radial-gradient(400px circle at var(--x,50%) var(--y,50%), 
+                                  rgba(56,189,248,0.1), 
+                                  rgba(168,85,247,0.08), 
+                                  rgba(99,102,241,0.06), 
+                                  transparent 60%)`,
+                    }}
+                  />
+
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="flex-shrink-0 p-3 rounded-xl surface">
+                      {exp.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold">{exp.title}</h3>
+                      <p className="text-accent-2 font-medium">{exp.company}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 text-sm muted mb-4">
+                    <div className="flex items-center gap-1">
+                      <Calendar size={16} />
+                      <span>{exp.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <MapPin size={16} />
+                      <span>{exp.location}</span>
+                    </div>
+                  </div>
+
+                  <p className="mb-4 text-sm">{exp.description}</p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="chip rounded-full px-3 py-1 text-xs font-medium"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 // ===== Futuristic Experience Section
 function FuturisticExperience() {
   const techItems = [
     {
       icon: <Cpu size={24} />,
       title: "AI Integration",
-      description: "Building intelligent interfaces with ML APIs and neural networks"
+      description:
+        "Building intelligent interfaces with ML APIs and neural networks",
     },
     {
       icon: <Zap size={24} />,
       title: "Real-time Systems",
-      description: "WebSocket-powered apps with instant data synchronization"
+      description: "WebSocket-powered apps with instant data synchronization",
     },
     {
       icon: <Brain size={24} />,
       title: "Predictive UX",
-      description: "Anticipatory design patterns that learn from user behavior"
+      description: "Anticipatory design patterns that learn from user behavior",
     },
     {
       icon: <Cloud size={24} />,
       title: "Edge Computing",
-      description: "Distributed architectures for low-latency experiences"
-    }
+      description: "Distributed architectures for low-latency experiences",
+    },
   ];
 
   return (
@@ -449,16 +573,17 @@ function FuturisticExperience() {
     >
       <div className="relative">
         {/* Animated grid background */}
-        <div 
+        <div
           className="absolute inset-0 opacity-20 z-0"
           style={{
             backgroundImage: `linear-gradient(var(--border) 1px, transparent 1px),
                               linear-gradient(90deg, var(--border) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-            maskImage: 'radial-gradient(circle at 50% 50%, black 30%, transparent 70%)'
+            backgroundSize: "50px 50px",
+            maskImage:
+              "radial-gradient(circle at 50% 50%, black 30%, transparent 70%)",
           }}
         />
-        
+
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           {techItems.map((item, index) => (
             <motion.div
@@ -470,19 +595,19 @@ function FuturisticExperience() {
               className="group relative overflow-hidden rounded-3xl card p-6 backdrop-blur hover:shadow-lg transition-all duration-500"
             >
               {/* Hover effect background */}
-              <div 
+              <div
                 className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                 style={{
                   background: `radial-gradient(400px circle at var(--x,50%) var(--y,50%), 
                               rgba(56,189,248,0.1), 
                               rgba(168,85,247,0.08), 
                               rgba(99,102,241,0.06), 
-                              transparent 60%)`
+                              transparent 60%)`,
                 }}
               />
-              
+
               {/* Animated border effect */}
-              <div 
+              <div
                 className="absolute inset-0 rounded-3xl -z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                 style={{
                   background: `linear-gradient(90deg, 
@@ -490,13 +615,13 @@ function FuturisticExperience() {
                               var(--accent-2), 
                               var(--accent-3))`,
                   mask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
-                  maskComposite: 'exclude',
-                  padding: '1px'
+                  maskComposite: "exclude",
+                  padding: "1px",
                 }}
               />
-              
+
               <div className="flex items-start gap-4">
-                <motion.div 
+                <motion.div
                   className="flex-shrink-0 p-2 rounded-xl surface"
                   whileHover={{ rotate: 10, scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -508,7 +633,7 @@ function FuturisticExperience() {
                   <p className="text-sm muted">{item.description}</p>
                 </div>
               </div>
-              
+
               {/* Floating particles animation */}
               <div className="absolute -top-4 -right-4 w-24 h-24 opacity-10 group-hover:opacity-20 transition-opacity duration-700">
                 {[...Array(5)].map((_, i) => (
@@ -537,8 +662,8 @@ function FuturisticExperience() {
             </motion.div>
           ))}
         </div>
-        
-        <motion.div 
+
+        <motion.div
           className="mt-12 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -547,23 +672,26 @@ function FuturisticExperience() {
         >
           <p className="muted mb-4">Currently experimenting with:</p>
           <div className="inline-flex flex-wrap justify-center gap-3">
-            {['WebGL', 'AR/VR', 'WebAssembly', 'Blockchain', 'IoT'].map((tech, i) => (
-              <motion.span
-                key={tech}
-                className="chip rounded-full px-3 py-1 text-xs font-medium"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 + i * 0.1 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  background: "linear-gradient(90deg, var(--accent-1), var(--accent-2))",
-                  color: "white"
-                }}
-              >
-                {tech}
-              </motion.span>
-            ))}
+            {["WebGL", "AR/VR", "WebAssembly", "Blockchain", "IoT"].map(
+              (tech, i) => (
+                <motion.span
+                  key={tech}
+                  className="chip rounded-full px-3 py-1 text-xs font-medium"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 + i * 0.1 }}
+                  whileHover={{
+                    scale: 1.05,
+                    background:
+                      "linear-gradient(90deg, var(--accent-1), var(--accent-2))",
+                    color: "white",
+                  }}
+                >
+                  {tech}
+                </motion.span>
+              )
+            )}
           </div>
         </motion.div>
       </div>
@@ -589,18 +717,18 @@ function Projects() {
         repo: "#",
       },
       {
-        title: "Try-On Prototype",
-        desc: "Virtual try-on POC that maps garments onto user photos (research project).",
-        tags: ["CV", "PyTorch", "React"],
-        href: "#",
-        repo: "#",
+        title: "Virtual-R",
+        desc: "Pushing web boundaries with React, 3D visuals, and Tailwind elegance.",
+        tags: ["REACT.JS", "TAILWIND CSS"],
+        href: "https://virutal-r.vercel.app/",
+        repo: "https://github.com/YuvrajPal27/VirutalR",
       },
       {
-        title: "Portfolio vNext",
+        title: "Portfolio",
         desc: "This site — built with slick scroll, motion, and clean components.",
         tags: ["React", "Framer Motion", "Tailwind"],
         href: "#",
-        repo: "#",
+        repo: "https://github.com/YuvrajPal27/Portfolio",
       },
     ],
     []
@@ -662,7 +790,7 @@ function Projects() {
   );
 }
 
-// ===== Awards Section
+// ===== Awards Section (Mobile Optimized)
 function Awards() {
   const awards = useMemo(
     () => [
@@ -670,43 +798,48 @@ function Awards() {
         id: 1,
         title: "Best UI/UX Design",
         event: "Tech Innovation Summit 2023",
-        description: "Awarded for exceptional user interface design and innovative user experience solutions in the Campus Connect Dashboard project.",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+        description:
+          "Awarded for exceptional user interface design and innovative user experience solutions in the Campus Connect Dashboard project.",
+        image:
+          "src/assets/rimsAward.jpg",
         date: "June 2023",
-        icon: <Trophy className="text-yellow-500" />
+        icon: <Trophy className="text-yellow-500" />,
       },
       {
         id: 2,
         title: "AI Innovation Award",
         event: "Global Hackathon Finals",
-        description: "Recognized for implementing novel AI solutions in the Try-On Prototype project that demonstrated technical excellence and creativity.",
-        image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+        description:
+          "Recognized for implementing novel AI solutions in the Try-On Prototype project that demonstrated technical excellence and creativity.",
+        image:
+          "src/assets/chatbot.JPG",
         date: "March 2023",
-        icon: <Award className="text-purple-500" />
+        icon: <Award className="text-purple-500" />,
       },
       {
         id: 3,
         title: "People's Choice Award",
         event: "Web Dev Showcase",
-        description: "Voted by attendees for the most impressive and user-friendly portfolio implementation among all participants.",
-        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+        description:
+          "Voted by attendees for the most impressive and user-friendly portfolio implementation among all participants.",
+        image:
+          "src/assets/UCUaward.jpeg",
         date: "November 2022",
-        icon: <Medal className="text-amber-500" />
+        icon: <Medal className="text-amber-500" />,
       },
-      {
-        id: 4,
-        title: "Rising Star in Tech",
-        event: "University Excellence Awards",
-        description: "Acknowledged for outstanding contributions to the tech community and demonstrating exceptional potential in software development.",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-        date: "May 2022",
-        icon: <Star className="text-blue-500" />
-      }
     ],
     []
   );
 
   const [selected, setSelected] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   return (
     <Section
@@ -741,146 +874,180 @@ function Awards() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Award cards */}
+        {/* Mobile view (stacked cards) */}
+        {isMobile ? (
           <div className="space-y-6">
             {awards.map((award, index) => (
               <motion.div
                 key={award.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative overflow-hidden rounded-3xl card p-6 backdrop-blur cursor-pointer transition-all duration-500 ${
-                  selected === index ? 'ring-2 ring-accent-2' : ''
-                }`}
-                onClick={() => setSelected(index)}
+                className="group relative overflow-hidden rounded-3xl card p-6 backdrop-blur"
               >
-                {/* Hover effect background */}
-                <div 
-                  className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                  style={{
-                    background: `radial-gradient(400px circle at var(--x,50%) var(--y,50%), 
-                                rgba(56,189,248,0.1), 
-                                rgba(168,85,247,0.08), 
-                                rgba(99,102,241,0.06), 
-                                transparent 60%)`
-                  }}
-                />
-                
-                <div className="flex items-start gap-4">
-                  <motion.div 
-                    className="flex-shrink-0 p-3 rounded-xl surface"
-                    whileHover={{ rotate: 10, scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 p-3 rounded-xl surface">
                     {award.icon}
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold mb-1">{award.title}</h3>
-                    <p className="text-sm font-medium text-accent-2 mb-2">{award.event}</p>
-                    <p className="text-sm muted line-clamp-2">{award.description}</p>
-                    <div className="flex items-center justify-between mt-3">
-                      <span className="text-xs chip px-2 py-1">{award.date}</span>
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: selected === index ? 1 : 0 }}
-                        className="w-2 h-2 rounded-full bg-accent-2"
-                      />
-                    </div>
                   </div>
+                  <div>
+                    <h3 className="text-lg font-semibold">{award.title}</h3>
+                    <p className="text-sm text-accent-2 font-medium">
+                      {award.event}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative h-48 overflow-hidden rounded-xl mb-4">
+                  <img
+                    src={award.image}
+                    alt={award.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg/80 to-transparent" />
+                </div>
+
+                <p className="mb-4 text-sm">{award.description}</p>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-xs chip px-3 py-1">{award.date}</span>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-3 py-1 rounded-full surface text-sm font-medium"
+                  >
+                    <span>View</span>
+                    <ArrowUpRight size={16} />
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
           </div>
-
-          {/* Award detail view */}
-          <div className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selected}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="sticky top-24 rounded-3xl overflow-hidden card backdrop-blur"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <motion.img 
-                    src={awards[selected].image}
-                    alt={awards[selected].title}
-                    className="w-full h-full object-cover"
-                    initial={{ scale: 1.1 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg/80 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-white">{awards[selected].title}</h3>
-                    <p className="text-accent-1 font-medium">{awards[selected].event}</p>
-                  </div>
-                  
-                  {/* Floating award icon */}
-                  <motion.div
-                    className="absolute top-4 right-4 p-3 rounded-full glass"
-                    initial={{ y: -10, rotate: -5 }}
-                    animate={{ y: 0, rotate: 0 }}
-                    transition={{ 
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 15,
-                      delay: 0.2
-                    }}
-                  >
-                    {awards[selected].icon}
-                  </motion.div>
-                </div>
-                
-                <div className="p-6">
-                  <p className="mb-4">{awards[selected].description}</p>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm chip px-3 py-1">{awards[selected].date}</span>
-                    
+        ) : (
+          /* Desktop view (side-by-side layout) */
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Award cards */}
+            <div className="space-y-6">
+              {awards.map((award, index) => (
+                <motion.div
+                  key={award.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`group relative overflow-hidden rounded-3xl card p-6 backdrop-blur cursor-pointer transition-all duration-500 ${
+                    selected === index ? "ring-2 ring-accent-2" : ""
+                  }`}
+                  onClick={() => setSelected(index)}
+                >
+                  <div className="flex items-start gap-4">
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-3 py-1 rounded-full surface text-sm font-medium"
+                      className="flex-shrink-0 p-3 rounded-xl surface"
+                      whileHover={{ rotate: 10, scale: 1.05 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
                     >
-                      <span>View Certificate</span>
-                      <ArrowUpRight size={16} />
+                      {award.icon}
+                    </motion.div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold mb-1">
+                        {award.title}
+                      </h3>
+                      <p className="text-sm font-medium text-accent-2 mb-2">
+                        {award.event}
+                      </p>
+                      <p className="text-sm muted line-clamp-2">
+                        {award.description}
+                      </p>
+                      <div className="flex items-center justify-between mt-3">
+                        <span className="text-xs chip px-2 py-1">
+                          {award.date}
+                        </span>
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: selected === index ? 1 : 0 }}
+                          className="w-2 h-2 rounded-full bg-accent-2"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Award detail view */}
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selected}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="sticky top-24 rounded-3xl overflow-hidden card backdrop-blur"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <motion.img
+                      src={awards[selected].image}
+                      alt={awards[selected].title}
+                      className="w-full h-full object-cover"
+                      initial={{ scale: 1.1 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.8 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg/80 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-xl font-bold text-white">
+                        {awards[selected].title}
+                      </h3>
+                      <p className="text-accent-1 font-medium">
+                        {awards[selected].event}
+                      </p>
+                    </div>
+
+                    {/* Floating award icon */}
+                    <motion.div
+                      className="absolute top-4 right-4 p-3 rounded-full glass"
+                      initial={{ y: -10, rotate: -5 }}
+                      animate={{ y: 0, rotate: 0 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 15,
+                        delay: 0.2,
+                      }}
+                    >
+                      {awards[selected].icon}
                     </motion.div>
                   </div>
-                  
-                  {/* Animated celebration elements */}
-                  <div className="absolute -bottom-10 -left-10 w-40 h-40 opacity-10">
-                    {[...Array(12)].map((_, i) => (
+
+                  <div className="p-6">
+                    <p className="mb-4">{awards[selected].description}</p>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm chip px-3 py-1">
+                        {awards[selected].date}
+                      </span>
+
                       <motion.div
-                        key={i}
-                        className="absolute w-2 h-2 rounded-full"
-                        style={{
-                          background: `linear-gradient(45deg, var(--accent-1), var(--accent-3))`,
-                          top: '50%',
-                          left: '50%',
-                        }}
-                        animate={{
-                          top: `${Math.sin((i * 30) * Math.PI / 180) * 40 + 50}%`,
-                          left: `${Math.cos((i * 30) * Math.PI / 180) * 40 + 50}%`,
-                          opacity: [0, 1, 0],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: i * 0.1,
-                        }}
-                      />
-                    ))}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center gap-2 px-3 py-1 rounded-full surface text-sm font-medium"
+                      >
+                        <span>View Certificate</span>
+                        <ArrowUpRight size={16} />
+                      </motion.div>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </Section>
   );
@@ -975,6 +1142,7 @@ export default function App() {
   const sections = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
+    { id: "experience", label: "Experience" },
     { id: "future", label: "Future Tech" },
     { id: "projects", label: "Projects" },
     { id: "awards", label: "Awards" },
@@ -1026,6 +1194,9 @@ export default function App() {
 
       {/* About */}
       <About />
+
+      {/* Experience */}
+      <Experience />
 
       {/* Futuristic Experience */}
       <FuturisticExperience />
