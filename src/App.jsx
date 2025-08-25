@@ -1,4 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import rims from "./assets/rims.jpg";
+import ME1 from "./assets/ME1.jpg";
+import chat from "./assets/chatbot.JPG";
+import ucu from "./assets/UCUaward.jpeg";
+import rim from "./assets/rimsAward.jpg"
 import {
   motion,
   useScroll,
@@ -7,7 +12,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import {
-  Github,   // Use lowercase 'Github'
+  Github,
   Linkedin,
   Mail,
   Moon,
@@ -328,7 +333,7 @@ function Hero() {
             className="relative mx-auto aspect-square w-64 overflow-hidden rounded-3xl card p-2 shadow-2xl backdrop-blur md:w-80"
           >
             <img
-              src="src\assets\ME1.jpg"
+              src={ME1}
               alt="Your Name"
               className="h-full w-full rounded-2xl object-cover"
             />
@@ -800,8 +805,7 @@ function Awards() {
         event: "Tech Innovation Summit 2023",
         description:
           "Awarded for exceptional user interface design and innovative user experience solutions in the Campus Connect Dashboard project.",
-        image:
-          "src/assets/rimsAward.jpg",
+        image: rim,
         date: "June 2023",
         icon: <Trophy className="text-yellow-500" />,
       },
@@ -811,8 +815,7 @@ function Awards() {
         event: "Global Hackathon Finals",
         description:
           "Recognized for implementing novel AI solutions in the Try-On Prototype project that demonstrated technical excellence and creativity.",
-        image:
-          "src/assets/chatbot.JPG",
+        image: chat,
         date: "March 2023",
         icon: <Award className="text-purple-500" />,
       },
@@ -822,8 +825,7 @@ function Awards() {
         event: "Web Dev Showcase",
         description:
           "Voted by attendees for the most impressive and user-friendly portfolio implementation among all participants.",
-        image:
-          "src/assets/UCUaward.jpeg",
+        image: ucu,
         date: "November 2022",
         icon: <Medal className="text-amber-500" />,
       },
