@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import rims from "./assets/rims.jpg";
 import ME1 from "./assets/ME1.jpg";
-import chat from "./assets/chatbot.JPG";
+import chat from "./assets/chatbot.jpg";
 import ucu from "./assets/UCUaward.jpeg";
 import rim from "./assets/rimsAward.jpg"
 import {
