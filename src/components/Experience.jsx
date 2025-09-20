@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, Brain, Calendar, MapPin } from 'lucide-react';
 import Section from './Section';
@@ -12,8 +12,8 @@ export default function Experience() {
         company: 'Uttarakhand Technical University',
         duration: 'April 2024 - August 2024',
         location: 'Dehradun, Uttarakhand',
-        description:
-          'Developed a centralized dashboard unifying data across all universities in Uttarakhand. Delivered a solution presented to the Honorable Governor of Uttarakhand. Created a unified data ecosystem to streamline institutional reporting and decision-making',
+        description:  
+        'Developed a centralized dashboard unifying data across all universities in Uttarakhand. Delivered a solution presented to the Honorable Governor of Uttarakhand. Created a unified data ecosystem to streamline institutional reporting and decision-making',
         skills: ['HTML', 'CSS', 'JAVASCRIPT', 'FIREBASE'],
         icon: <Briefcase size={20} className="text-accent-1" />,
       },

@@ -6,40 +6,13 @@ import Section from './Section';
 export default function Projects() {
   const projects = useMemo(
     () => [
-      {
-        title: 'Campus Connect Dashboard',
-        desc: 'A clean Firebase-backed dashboard for universities with analytics and role-based views.',
-        tags: ['React', 'Firebase', 'Tailwind'],
-        href: '#',
-        repo: '#',
-      },
-      {
-        title: 'Zenith',
-        desc: 'A cutting-edge platform for seamless collaboration and project management.',
-        tags: ['Next.js', 'TypeScript', 'GraphQL'],
-        href: '#',
-        repo: '#',
-      },
-      {
-        title: 'AI Resume Ranker',
-        desc: 'Ranks resumes using simple NLP scoring; built fast to help shortlisting.',
-        tags: ['Python', 'NLP', 'Flask'],
-        href: '#',
-        repo: '#',
-      },
+      
       {
         title: 'Virtual-R',
-        desc: 'Pushing web boundaries with React, 3D visuals, and Tailwind elegance.',
+        desc: 'A sleek, static React + Tailwind portfolio-style site showcasing design and UI skills, deployed on Vercel.',
         tags: ['REACT.JS', 'TAILWIND CSS'],
         href: 'https://virutal-r.vercel.app/',
         repo: 'https://github.com/YuvrajPal27/VirutalR',
-      },
-      {
-        title: 'Portfolio',
-        desc: 'This site — built with slick scroll, motion, and clean components.',
-        tags: ['React', 'Framer Motion', 'Tailwind'],
-        href: '#',
-        repo: 'https://github.com/YuvrajPal27/Portfolio',
       },
     ],
     []
@@ -48,8 +21,8 @@ export default function Projects() {
   return (
     <Section
       id="projects"
-      title="Selected Works"
-      subtitle="Here are some of my favorite projects that I've worked on."
+      title="Projects"
+      subtitle="Here are some of my projects that I've worked on."
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((p) => (

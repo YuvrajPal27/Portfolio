@@ -1,42 +1,42 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Award, Medal, ArrowUpRight } from 'lucide-react';
-import Section from './Section';
-import rim from '../assets/rimsAward.jpg';
-import chat from '../assets/chatbot.JPG';
-import ucu from '../assets/UCUaward.jpeg';
+import { useState, useMemo, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Trophy, Award, Medal, ArrowUpRight } from "lucide-react";
+import Section from "./Section";
+import rim from "../assets/rimsAward.jpg";
+import chat from "../assets/chatbot.JPG";
+import ucu from "../assets/UCUaward.jpeg";
 
 export default function Awards() {
   const awards = useMemo(
     () => [
       {
         id: 1,
-        title: 'Best UI/UX Design',
-        event: 'Tech Innovation Summit 2023',
-        description:
-          'Awarded for exceptional user interface design and innovative user experience solutions in the Campus Connect Dashboard project.',
+        title: "Internship Milestone",
+        event: "Certificate of Appreciation",
+        description: `Grateful to have contributed to building an Inventory Management System at Rajbhawan and honored to receive a certificate of appreciation from Governor Lt. Gen Gurmit Singh .
+          This journey has fueled my passion and sharpened my skills for future challenges. 🙏`,
         image: rim,
-        date: 'June 2023',
+        date: "June 2023",
         icon: <Trophy className="text-yellow-500" />,
       },
       {
         id: 2,
-        title: 'AI Innovation Award',
-        event: 'Global Hackathon Finals',
+        title: "Honored Recognition",
+        event: "AI Chatbot on Guru Granth Sahib Ji",
         description:
-          'Recognized for implementing novel AI solutions in the Try-On Prototype project that demonstrated technical excellence and creativity.',
+          "Grateful to be acknowledged by the Honorable Governor of Uttarakhand for developing an AI-powered chatbot on Guru Granth Sahib Ji, a project uniting technology, spirituality, and impact. Excited to keep building purposeful tools that inspire and uplift. 🚀",
         image: chat,
-        date: 'March 2023',
+        date: "March 2023",
         icon: <Award className="text-purple-500" />,
       },
       {
         id: 3,
-        title: "People's Choice Award",
-        event: 'Web Dev Showcase',
+        title: "UCU – Project Completion",
+        event: "Driving transparency through technology",
         description:
-          'Voted by attendees for the most impressive and user-friendly portfolio implementation among all participants.',
+          "Thrilled to have developed a centralized dashboard for all universities in Uttarakhand, streamlining data collection and enabling real-time insights for the Honorable Governor. This project sharpened my skills while contributing to impactful digital transformation. 🌟",
         image: ucu,
-        date: 'November 2022',
+        date: "November 2022",
         icon: <Medal className="text-amber-500" />,
       },
     ],
@@ -49,8 +49,8 @@ export default function Awards() {
   useEffect(() => {
     const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
     checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
+    window.addEventListener("resize", checkIsMobile);
+    return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
   return (
@@ -94,7 +94,7 @@ export default function Awards() {
                 key={award.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-10%' }}
+                viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-3xl card p-6 backdrop-blur"
               >
@@ -123,15 +123,6 @@ export default function Awards() {
 
                 <div className="flex items-center justify-between">
                   <span className="text-xs chip px-3 py-1">{award.date}</span>
-
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-3 py-1 rounded-full surface text-sm font-medium"
-                  >
-                    <span>View</span>
-                    <ArrowUpRight size={16} />
-                  </motion.div>
                 </div>
               </motion.div>
             ))}
@@ -146,10 +137,10 @@ export default function Awards() {
                   key={award.id}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-10%' }}
+                  viewport={{ once: true, margin: "-5%" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className={`group relative overflow-hidden rounded-3xl card p-6 backdrop-blur cursor-pointer transition-all duration-500 ${
-                    selected === index ? 'ring-2 ring-accent-2' : ''
+                    selected === index ? "ring-2 ring-accent-2" : ""
                   }`}
                   onClick={() => setSelected(index)}
                 >
@@ -158,7 +149,7 @@ export default function Awards() {
                       className="flex-shrink-0 p-3 rounded-xl surface"
                       whileHover={{ rotate: 10, scale: 1.05 }}
                       transition={{
-                        type: 'spring',
+                        type: "spring",
                         stiffness: 400,
                         damping: 10,
                       }}
@@ -172,9 +163,7 @@ export default function Awards() {
                       <p className="text-sm font-medium text-accent-2 mb-2">
                         {award.event}
                       </p>
-                      <p className="text-sm muted line-clamp-2">
-                        {award.description}
-                      </p>
+                      <p className="text-sm muted ">{award.description}</p>
                       <div className="flex items-center justify-between mt-3">
                         <span className="text-xs chip px-2 py-1">
                           {award.date}
@@ -212,14 +201,6 @@ export default function Awards() {
                       transition={{ duration: 0.8 }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bg/80 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-xl font-bold text-white">
-                        {awards[selected].title}
-                      </h3>
-                      <p className="text-accent-1 font-medium">
-                        {awards[selected].event}
-                      </p>
-                    </div>
 
                     {/* Floating award icon */}
                     <motion.div
@@ -227,7 +208,7 @@ export default function Awards() {
                       initial={{ y: -10, rotate: -5 }}
                       animate={{ y: 0, rotate: 0 }}
                       transition={{
-                        type: 'spring',
+                        type: "spring",
                         stiffness: 500,
                         damping: 15,
                         delay: 0.2,
@@ -237,23 +218,19 @@ export default function Awards() {
                     </motion.div>
                   </div>
 
-                  <div className="p-6">
-                    <p className="mb-4">{awards[selected].description}</p>
-
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm chip px-3 py-1">
-                        {awards[selected].date}
-                      </span>
-
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-3 py-1 rounded-full surface text-sm font-medium"
-                      >
-                        <span>View Certificate</span>
-                        <ArrowUpRight size={16} />
-                      </motion.div>
+                  <div className="p-6 flex items-center justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold text-white">
+                        {awards[selected].title}
+                      </h3>
+                      <p className="text-accent-1 font-medium">
+                        {awards[selected].event}
+                      </p>
                     </div>
+
+                    <span className="text-sm chip px-3 py-1">
+                      {awards[selected].date}
+                    </span>
                   </div>
                 </motion.div>
               </AnimatePresence>

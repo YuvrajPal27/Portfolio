@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
 import ME1 from '../assets/ME1.jpg';
@@ -52,7 +52,7 @@ export default function Hero() {
             👋
           </h1>
           <p className="mb-6 max-w-xl muted">
-            CSE undergrad building clean UIs and smart, data-driven features. I
+            CSE Graduate building clean UIs and smart features. I
             love React, Tailwind, and shipping fast. Here's what I've been
             hacking on lately.
           </p>

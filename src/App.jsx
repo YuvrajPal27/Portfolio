@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
-import FuturisticExperience from './components/FuturisticExperience';
 import Projects from './components/Projects';
 import Awards from './components/Awards';
 import Contact from './components/Contact';
@@ -36,7 +35,6 @@ export default function App() {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
-    { id: 'future', label: 'Future Tech' },
     { id: 'projects', label: 'Projects' },
     { id: 'awards', label: 'Awards' },
     { id: 'contact', label: 'Contact' },
@@ -91,8 +89,7 @@ export default function App() {
       {/* Experience */}
       <Experience />
 
-      {/* Futuristic Experience */}
-      <FuturisticExperience />
+
 
       {/* Projects */}
       <Projects />
