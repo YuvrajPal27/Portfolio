@@ -23,7 +23,7 @@ export default function Hero() {
     <section
       id="home"
       ref={targetRef}
-      className="relative z-10 flex min-h-screen items-center justify-center overflow-hidden px-4"
+      className="relative z-30 flex min-h-screen items-center justify-center overflow-hidden px-4"
     >
       <MouseBlob />
       <motion.div
@@ -98,7 +98,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative order-1 overflow-hidden md:order-2">
+        <div className="relative order-1 pb-10 md:order-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="absolute -bottom-10 left-1/2 w-56 -translate-x-1/2 rounded-2xl card p-3 text-center text-sm shadow-xl backdrop-blur md:w-64"
+            className="absolute -bottom-2 left-1/2 w-56 -translate-x-1/2 rounded-2xl card p-3 text-center text-sm shadow-xl backdrop-blur md:w-64"
           >
             <p className="font-semibold">Front-end Developer</p>
             <p className="muted">React • Tailwind • Framer Motion</p>

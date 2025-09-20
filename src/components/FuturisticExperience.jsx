@@ -55,7 +55,7 @@ export default function FuturisticExperience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-10%' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-3xl card p-6 backdrop-blur hover:shadow-lg transition-all duration-500"
+              className="group relative rounded-3xl card p-6 backdrop-blur hover:shadow-lg transition-all duration-500"
             >
               {/* Hover effect background */}
               <div
@@ -97,31 +97,6 @@ export default function FuturisticExperience() {
                 </div>
               </div>
 
-              {/* Floating particles animation */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 opacity-10 group-hover:opacity-20 transition-opacity duration-700">
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute rounded-full"
-                    style={{
-                      background: `linear-gradient(45deg, var(--accent-1), var(--accent-3))`,
-                      width: `${4 + i * 2}px`,
-                      height: `${4 + i * 2}px`,
-                      top: `${Math.random() * 60}%`,
-                      left: `${Math.random() * 60}%`,
-                    }}
-                    animate={{
-                      y: [0, -10, 0],
-                      opacity: [0.5, 1, 0.5],
-                    }}
-                    transition={{
-                      duration: 3 + i,
-                      repeat: Infinity,
-                      delay: i * 0.5,
-                    }}
-                  />
-                ))}
-              </div>
             </motion.div>
           ))}
         </div>
