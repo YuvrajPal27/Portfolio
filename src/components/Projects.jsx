@@ -14,6 +14,13 @@ export default function Projects() {
         repo: '#',
       },
       {
+        title: 'Zenith',
+        desc: 'A cutting-edge platform for seamless collaboration and project management.',
+        tags: ['Next.js', 'TypeScript', 'GraphQL'],
+        href: '#',
+        repo: '#',
+      },
+      {
         title: 'AI Resume Ranker',
         desc: 'Ranks resumes using simple NLP scoring; built fast to help shortlisting.',
         tags: ['Python', 'NLP', 'Flask'],
