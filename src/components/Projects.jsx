@@ -41,8 +41,8 @@ export default function Projects() {
   return (
     <Section
       id="projects"
-      title="Projects"
-      subtitle="Stuff I'm proud of. Clean code, shipped UI, and experiments that kept me up too late."
+      title="Selected Works"
+      subtitle="Here are some of my favorite projects that I've worked on."
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((p) => (
