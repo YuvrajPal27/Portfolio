@@ -98,7 +98,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative order-1 md:order-2">
+        <div className="relative order-1 overflow-hidden md:order-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
