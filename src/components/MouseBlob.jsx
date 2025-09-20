@@ -18,7 +18,7 @@ export function MouseBlob() {
 
   return (
     <motion.div
-      className="fixed hidden lg:block"
+      className="fixed hidden lg:block pointer-events-none"
       style={{
         left: mousePosition.x,
         top: mousePosition.y,

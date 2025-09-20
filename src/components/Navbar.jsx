@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Mail, Moon, Sun } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from './Theme';
 
 function scrollToId(id) {
@@ -10,6 +10,13 @@ function scrollToId(id) {
 
 export default function Navbar({ sections, active }) {
   const { dark, setDark } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleLinkClick = (id) => {
+    scrollToId(id);
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed inset-x-0 top-0 z-40 nav-shadow">
       <div className="glass mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
@@ -20,11 +27,12 @@ export default function Navbar({ sections, active }) {
           YUVRAJ
         </button>
         <div className="flex items-center gap-2 md:gap-6">
+          {/* Desktop Menu */}
           <ul className="hidden items-center gap-1 md:flex">
             {sections.map((s) => (
               <li key={s.id}>
                 <button
-                  onClick={() => scrollToId(s.id)}
+                  onClick={() => handleLinkClick(s.id)}
                   className={`px-3 py-2 text-sm font-medium transition hover:opacity-80 ${
                     active === s.id ? '' : 'muted'
                   }`}
@@ -34,6 +42,7 @@ export default function Navbar({ sections, active }) {
               </li>
             ))}
           </ul>
+
           <button
             onClick={() => setDark(!dark)}
             aria-label="Toggle theme"
@@ -41,8 +50,38 @@ export default function Navbar({ sections, active }) {
           >
             {dark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+          
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="bdr glass rounded-2xl p-2 shadow-sm transition hover:scale-105"
+            >
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
         </div>
       </div>
+      
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden glass">
+          <ul className="flex flex-col items-center gap-1 px-4 pb-3">
+            {sections.map((s) => (
+              <li key={s.id}>
+                <button
+                  onClick={() => handleLinkClick(s.id)}
+                  className={`block w-full px-3 py-2 text-sm font-medium transition text-center hover:opacity-80 ${
+                    active === s.id ? '' : 'muted'
+                  }`}
+                >
+                  {s.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }
