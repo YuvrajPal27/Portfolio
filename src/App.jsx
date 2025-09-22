@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Awards from './components/Awards';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 import { ThemeStyles, useTheme } from './components/Theme';
 
 function useActiveSection(ids) {
@@ -105,6 +106,9 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Back to top button */}
+      <BackToTop containerRef={containerRef} />
     </div>
   );
 }

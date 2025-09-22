@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
 import ME1 from '../assets/ME1.jpg';
-import { MouseBlob } from './MouseBlob';
 
 function scrollToId(id) {
   const el = document.getElementById(id);
@@ -25,7 +24,6 @@ export default function Hero() {
       ref={targetRef}
       className="relative z-30 flex min-h-screen items-center justify-center overflow-hidden px-4"
     >
-      <MouseBlob />
       <motion.div
         style={{ y, scale }}
         className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2"
