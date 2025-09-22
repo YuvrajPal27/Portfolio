@@ -40,9 +40,12 @@ export default function App() {
     { id: 'contact', label: 'Contact' },
   ];
   const active = useActiveSection(sections.map((s) => s.id));
+  const containerRef = useRef(null);
 
   // Visual scroll progress bar top
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll({
+    container: containerRef
+  });
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 120,
     damping: 20,
@@ -63,7 +66,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen">
+    <div ref={containerRef} className="relative h-screen overflow-y-auto">
       <ThemeStyles />
       <motion.div
         style={{ scaleX }}
