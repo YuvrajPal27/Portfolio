@@ -6,7 +6,6 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Awards from './components/Awards';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import { ThemeStyles, useTheme } from './components/Theme';
@@ -38,7 +37,6 @@ export default function App() {
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
     { id: 'awards', label: 'Awards' },
-    { id: 'contact', label: 'Contact' },
   ];
   const active = useActiveSection(sections.map((s) => s.id));
   const containerRef = useRef(null);
@@ -100,9 +98,6 @@ export default function App() {
 
       {/* Awards */}
       <Awards />
-
-      {/* Contact */}
-      <Contact />
 
       {/* Footer */}
       <Footer />

@@ -8,10 +8,10 @@ export default function Projects() {
     () => [
       
       {
-        title: 'Virtual-R',
-        desc: 'A sleek, static React + Tailwind portfolio-style site showcasing design and UI skills, deployed on Vercel.',
+        title: 'uniConnect',
+        desc: 'I developed a centralized dashboard that unifies data from all universities in Uttarakhand, a solution presented to the Honorable Governor. This project creates a unified data ecosystem, streamlining institutional reporting and decision-making.',
         tags: ['REACT.JS', 'TAILWIND CSS'],
-        href: 'https://virutal-r.vercel.app/',
+        href: 'https://uni-connect-clone.web.app/',
         repo: 'https://github.com/YuvrajPal27/VirutalR',
       },
     ],
@@ -22,7 +22,7 @@ export default function Projects() {
     <Section
       id="projects"
       title="Projects"
-      subtitle="Here are some of my projects that I've worked on."
+      subtitle="Here are some of my projects that I\'ve worked on."
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((p) => (
